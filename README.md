@@ -14,3 +14,25 @@ This project is a React application that utilizes TypeScript for type checking a
 
 ```shell
 npm install
+```
+To start the development server, run the following command:
+```shell
+npm run dev
+```
+To build the production-ready version of the app, run the following command
+
+```shell
+npm run build
+```
+The optimized build will be available in the dist directory.
+
+## Scripts
+
+dev: Start the development server.
+build: Build the production-ready app.
+lint: Run ESLint to lint the codebase.
+preview: Preview the production build locally.
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
