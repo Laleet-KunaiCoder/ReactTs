@@ -24,7 +24,7 @@ const App: React.FC = () => {
     setUsername(event.target.value);
   };
 
-  const handleRegistration = async () => {
+  const handleRegistration = async (registrationType: AuthenticatorAttachment) => {
     if (!username) {
       setError("Please enter a username."); // Display error if username is empty
       return;
@@ -32,7 +32,7 @@ const App: React.FC = () => {
 
     try {
       const resp = await fetch(
-        `http://localhost:8080/generate-registration-options?username=${username}`
+        `http://localhost:8080/generate-registration-options?username=${username}&plt=${registrationType}`
       );
       const responseObject = await resp.json();
       setRegistrationResponse(responseObject); // Store registration response
@@ -124,8 +124,11 @@ const App: React.FC = () => {
       className="input"
     />
    <div className="button-container">
-        <button onClick={handleRegistration} className="button">
-          Register
+        <button onClick={()=>handleRegistration("platform")} className="button">
+            Register
+        </button>
+        <button onClick={()=>handleRegistration("cross-platform")} className="button">
+            CrossPlatform
         </button>
         <button onClick={handleAuthentication} className="button">
           Authenticate
